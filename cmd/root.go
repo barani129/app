@@ -62,11 +62,12 @@ func initConfig() {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		// Find home directory.
-		home, err := os.UserHomeDir()
-		cobra.CheckErr(err)
+		// commenting out below two lines to support $HOME in line 70 over home variable
+		// home, err := os.UserHomeDir()
+		// cobra.CheckErr(err)
 
 		// Search config in home directory with name ".app" (without extension).
-		viper.AddConfigPath(home)
+		viper.AddConfigPath("$HOME")
 		viper.SetConfigType("yaml")
 		viper.SetConfigName(".app")
 	}
